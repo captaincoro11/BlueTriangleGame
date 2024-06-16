@@ -31,7 +31,7 @@ exports.register = async(req,res)=>{
     };
 
     const hashedPassword = await bcrypt.hash(password,10);
-    const token = await jwt.sign({email:email},process.env.JWT_SECRET,{expiresIn:'1h'})
+    const token = await jwt.sign({email:email},process.env.JWT_SECRET,{expiresIn:'1d'})
 
 
     const newUser  = await prisma.user.create({
@@ -90,7 +90,7 @@ exports.login = async(req,res)=>{
         })
       }
   
-      const token = await jwt.sign({email:user.email},process.env.JWT_SECRET,{expiresIn:'1h'});
+      const token = await jwt.sign({email:user.email},process.env.JWT_SECRET,{expiresIn:'1d'});
   
   
      
@@ -142,13 +142,21 @@ exports.login = async(req,res)=>{
   exports.getUsername = async(req,res)=>{
     try {
         const id = req.params.id;
-        const username = await prisma.user.findFirst({
+        
+        const user = await prisma.user.findUnique({
+            where:{
             id:id
+        }
         });
+        if(!user){
+            return res.status(404).json({
+                message:"User not found"
+            })
+        }
 
         res.status(200).json({
             message:"User fetched successfully",
-            username
+            username:user.username
         })
 
         

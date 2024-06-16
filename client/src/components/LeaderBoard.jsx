@@ -6,9 +6,9 @@ import { url } from './constant';
 
 const Leaderboard = () => {
    const {Leaderboard , setLeaderboard}  = useContext(MyContext);
-   const [Loading,setLoading] = useState(false);
    const [userNames,setUsernames] = useState([]);
    const [time,setTime] = useState('5m')
+   const [Loading,setIsLoading] = useState(false)
    useEffect(() => {
    const socket = io('http://localhost:4000'); // Replace with your WebSocket server URL
 
@@ -32,36 +32,22 @@ const Leaderboard = () => {
     };
   }, [time]);
 
+
   useEffect(()=>{
-    
-
-
-
-
-
-  
-  },[time])
-  
-
-
-
-
-  if(Loading){
-    
+   if(Leaderboard.length>0){
     try {
-      setLoading(true)
+      setIsLoading(true);
       const convertUsernames = async(id)=>{
         try {
   
           const token = localStorage.getItem("token")
-          const response = await axios.get(`${url}user/getUsername/:${id}`,{
+          const response = await axios.get(`${url}user/getUsername/${id}`,{
             headers:{
               "Authorization":`Bearer ${token}`,
               "Content-Type":"Application/json" 
             }
           });
 
-          console.log(response)
   
          return response.data.username
           
@@ -72,15 +58,29 @@ const Leaderboard = () => {
        
       }
       let a =[]
+
+      const mappingLeaderBoard = async()=>{
+
+        Leaderboard.map(async(item,index)=>{
+          const b = await (convertUsernames(item.userId));
+          console.log(b)
+          a.push(b)
+     setUsernames([...a])
+
+ 
+ 
+     });
+
+ 
+
+      }
+
+   mappingLeaderBoard()
+
+
+
   
-      Leaderboard.map((item,index)=>{
-           const b = convertUsernames(item.userId);
-           a.push(b)
-  
-  
-      });
-  
-      setUsernames([...a])
+     
   
       
      } catch (error) {
@@ -88,14 +88,26 @@ const Leaderboard = () => {
       
      }
      finally{
-      setLoading(false)
+      setIsLoading(false)
      }
-   
-  }
 
-  console.log(Leaderboard);
+
+    }
+
+  
+
+  },[Leaderboard])
+
+
   console.log(userNames);
-  console.log(time);
+
+  if(Loading){
+    <div>Loadnig</div>
+  }
+    
+    
+
+
 
   if(Leaderboard.length===0){
     return (
@@ -124,9 +136,9 @@ const Leaderboard = () => {
    
      
     <div className=' bg-blue-800 bg-opacity-25 p-8  h-4/5 w-4/5 rounded-md'>
-    <div className='flex justify-center space-x-9'>
+    <div className=' flex flex-col md:flex-row justify-center space-x-9'>
       <h2 className='text-white text-3xl flex justify-center mt-2 '>Leaderboard</h2>
-      <div className='  bg-blue-400 p-2 rounded-md space-x-6'>
+      <div className='  bg-blue-400 mt-4 md:mt-0 p-2 rounded-md space-x-2 md:space-x-6'>
     <button value={'5m'} onClick={()=>{setTime('5m')}} className={time==='5m'?" bg-orange-500 w-20 p-2 rounded-md" :''}>5m</button>
     <button value={'10m'} onClick={()=>{setTime('10m')}} className={time==='10m'?" bg-orange-500 w-20 p-2 rounded-md" :''}>10m</button>
 
@@ -136,12 +148,23 @@ const Leaderboard = () => {
 
     </div>
     </div>
+
       <div className='text-white mt-12 text-center '>
+      <div className=' grid grid-cols-3 gap-x-4'>
+        <h1>Username</h1>
+        <h1>Triangles</h1>
+        <h1>Score</h1>
+
+      </div>
         {Leaderboard.map((user, index) => (
-         <div className='grid grid-cols-3 gap-y-4 gap-x-4 justify-evenly'>
-         <div className=''>
-          {user.userId}
-         </div>
+         <div className='grid grid-cols-3 gap-y-4 gap-x-4 mt-2 justify-evenly'>
+         {
+          <div>
+            {
+              userNames[index]
+            }
+          </div>
+         }
          <div>
          {user.blueTriangles}
 

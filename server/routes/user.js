@@ -12,7 +12,7 @@ app.get('/',(req,res)=>{
 app.post('/register',register);
 app.post('/login',login);
 app.post('/logout',logout);
-app.get('/getUsername',isAuthenticated,getUsername);
+app.get('/getUsername/:id',isAuthenticated,getUsername);
 app.get('/loadUser', isAuthenticated,loaduser);
 
 module.exports = app;

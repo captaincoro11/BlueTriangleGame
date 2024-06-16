@@ -26,7 +26,6 @@ model Game{
   score Int @default(0)
   timestamp DateTime @default(now())
   blueTriangles Int @default(0)
-  GameUsername String
   userId String
   user User @relation(fields: [userId],references: [id])
 }
