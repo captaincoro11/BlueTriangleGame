@@ -45,7 +45,7 @@ const Register = () => {
 
 
   return (
-    <div className=' flex items-center justify-center'>
+    <div className=' flex items-center justify-center font-playwrite'>
     <Toaster/>
 
     <div className=' bg-blue-800 md:w-1/2 p-2 bg-opacity-25 mt-24 rounded-lg'>
@@ -78,7 +78,7 @@ const Register = () => {
       />:"SignUp"}</button>
        </div> 
        <div className='text-center mb-4'>
-        <p className="text-white text-sm">Already Registered?<Link to='/login' className='text-orange-600 cursor-pointer'>Click Here</Link></p>
+        <p className="text-white text-sm font-playwrite">Already Registered?<Link to='/login' className='text-orange-600 cursor-pointer font-playwrite'>Click Here</Link></p>
        </div>
     </div>
 

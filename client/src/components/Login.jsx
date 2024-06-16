@@ -56,12 +56,12 @@ const Login = () => {
         <h1 className=' font-playwrite p-2 text-white text-2xl md:text-4xl text-center font-semibold'>Login</h1>
         
         <div className='mt-6 space-x-4'>
-            <div className='text-white text-md' htmlFor="">Email</div>
-       <input value={email} onChange={(e)=>setEmail(e.target.value)} placeholder='Enter Your Email' className=' border-none p-2 outline-none w-80 rounded-md' type="text" />
+            <div className='text-white text-md font-playwrite' htmlFor="">Email</div>
+       <input value={email} onChange={(e)=>setEmail(e.target.value)} placeholder='Enter Your Email' className=' border-none p-2 outline-none w-80 rounded-md font-playwrite' type="text" />
         </div>
         <div className='mt-6 space-x-4'>
-            <div className='text-white text-md' htmlFor="">Password</div>
-       <input value={password} onChange={(e)=>setPassword(e.target.value)}  placeholder='Enter Your Password' className=' border-none w-80 outline-none p-2 rounded-md' type="text" />
+            <div className='text-white text-md font-playwrite' htmlFor="">Password</div>
+       <input value={password} onChange={(e)=>setPassword(e.target.value)}  placeholder='Enter Your Password' className=' border-none w-80 outline-none font-playwrite p-2 rounded-md' type="text" />
         </div>
         
         </div> 
@@ -77,7 +77,7 @@ const Login = () => {
       />:"SignIn"}</button>
        </div> 
        <div className='text-center mb-4'>
-        <p className="text-white text-sm">Not Registered Yet?<Link to='/register' className='text-orange-600 cursor-pointer'>Click Here</Link></p>
+        <p className="text-white text-sm font-playwrite">Not Registered Yet?<Link to='/register' className='text-orange-600 cursor-pointer font-playwrite'>Click Here</Link></p>
        </div>
     </div>
 

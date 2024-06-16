@@ -185,7 +185,7 @@ const Game = () => {
     <div className='fixed top-3/4 text-white font-semibold bg-orange-500 rounded-md p-2 font-playwrite '>
         Score:{score}
     </div>
-    <p className= 'fixed text-xl bottom-8 text-white'>Play Area</p>
+    <p className= 'fixed text-xl bottom-8 font-playwrite text-white'>Play Area</p>
     </div>
   )
 }
