@@ -11,13 +11,7 @@ const axios  = require("axios");
 const cors = require('cors');
 const {isAuthenticated} =require('../middleWare/userAuthentication')
 const prisma = new PrismaClient();
-const io = socketIo(server,{
-  cors: {
-    origin: "*", 
-    methods: ["GET", "POST","PUT"],
-    
-  }
-})
+const io = socketIo(server)
 
 // Use body-parser middleware before defining routes
 app.use(bodyParser.json());

@@ -11,7 +11,7 @@ import io from 'socket.io-client'
 import { MyContext } from './Context'
 
 
-const socket = io('https://blue-triangle-game-backend.vercel.app/')
+const socket = io(`${url}`)
 
 
 

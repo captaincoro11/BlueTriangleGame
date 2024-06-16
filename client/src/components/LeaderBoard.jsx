@@ -10,7 +10,7 @@ const Leaderboard = () => {
    const [time,setTime] = useState('5m')
    const [Loading,setIsLoading] = useState(false)
    useEffect(() => {
-   const socket = io('https://blue-triangle-game-backend.vercel.app/'); // Replace with your WebSocket server URL
+   const socket = io(`${url}`); // Replace with your WebSocket server URL
 
     socket.on('connect', () => {
       console.log('WebSocket connected');
