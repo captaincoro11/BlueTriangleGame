@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Game" ALTER COLUMN "blueTriangles" SET DEFAULT 0,
+ALTER COLUMN "score" SET DEFAULT 0;
