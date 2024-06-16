@@ -1,6 +1,6 @@
 
 const { get } = require('http');
-const {PrismaClient} = require('prisma/prisma-client');
+const {PrismaClient} = require('@prisma/client');
 const prisma = new PrismaClient()
 exports.newGameSession = async(req,res)=>{
 

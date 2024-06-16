@@ -1,7 +1,7 @@
 const jwt= require('jsonwebtoken');
 const dotenv  = require('dotenv');
 dotenv.config({});
-const {PrismaClient} = require('prisma/prisma-client');
+const {PrismaClient} = require('@prisma/client');
 const prisma = new PrismaClient();
 
 exports.isAuthenticated = async(req,res,next)=>{
