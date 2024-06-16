@@ -18,7 +18,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors());
 const server = http.createServer(app);
-const io = socketIo(server)
+const io = socketIo(server,{
+  cors:{
+    origin:"*",
+  
+  }
+})
 
 
 
