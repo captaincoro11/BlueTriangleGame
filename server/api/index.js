@@ -35,8 +35,9 @@ const getTime = (time)=>{
 }
 
 const fetchLeaderBoard =async(time)=>{
+   console.log(time)
+  const timeCondition = getTime(time);
 
-  const timeCondition = getTime(time)
 
   try{
       const games = await prisma.game.findMany({

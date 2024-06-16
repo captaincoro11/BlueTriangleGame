@@ -159,7 +159,7 @@ const Game = () => {
           socket.off('leaderboard_update');
         }
 
-      },[])
+      },[score])
 
     
 
