@@ -5,13 +5,11 @@ const bodyParser = require('body-parser');
 const userRoutes = require('../routes/user');
 const { PrismaClient} = require('@prisma/client')
 const gameRoutes = require('../routes/game');
-const server = http.createServer(app);
 const socketIo = require('socket.io');
 const axios  = require("axios");
 const cors = require('cors');
 const {isAuthenticated} =require('../middleWare/userAuthentication')
 const prisma = new PrismaClient();
-const io = socketIo(server)
 
 // Use body-parser middleware before defining routes
 app.use(bodyParser.json());
@@ -19,6 +17,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.use(cors());
+const server = http.createServer(app);
+const io = socketIo(server)
+
+
 
 app.use('/user', userRoutes);
 app.use('/game', gameRoutes);
