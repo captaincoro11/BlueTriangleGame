@@ -112,7 +112,7 @@ const Leaderboard = () => {
   if(Leaderboard.length===0){
     return (
       
-      <div className='flex justify-center'>
+      <div className='flex justify-center font-playwrite'>
     <div>
       <div className=' flex justify-center items-center mt-20 bg-blue-700 bg-opacity-25 p-4 text-white  rounded-md'>
         No Active Games in last {time}
@@ -132,7 +132,7 @@ const Leaderboard = () => {
   }
 
   return (
-    <div className=' flex justify-center p-4 mt-8'>
+    <div className=' flex justify-center p-4 mt-8 font-playwrite'>
    
      
     <div className=' bg-blue-800 bg-opacity-25 p-8  h-4/5 w-4/5 rounded-md'>
