@@ -8,13 +8,23 @@ const gameRoutes = require('../routes/game');
 const server = http.createServer(app);
 const socketIo = require('socket.io');
 const axios  = require("axios");
+const cors = require('cors');
 const {isAuthenticated} =require('../middleWare/userAuthentication')
 const prisma = new PrismaClient();
-const io = socketIo(server)
+const io = socketIo(server,{
+  cors: {
+    origin: "*", 
+    methods: ["GET", "POST","PUT"],
+    
+  }
+})
 
 // Use body-parser middleware before defining routes
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+
+app.use(cors());
 
 app.use('/user', userRoutes);
 app.use('/game', gameRoutes);
